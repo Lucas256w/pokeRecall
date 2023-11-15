@@ -1,0 +1,40 @@
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-image: url('/public/background.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Optional: Set background attachment to fixed if you want a fixed background */
+  background-attachment: fixed;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  row-gap: 100px;
+  place-content: center;
+  place-items: center;
+}
+
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+
+@media (max-width: 500px) {
+  main {
+    grid-template-columns: repeat(2, 200px);
+  }
+}

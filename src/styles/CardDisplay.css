@@ -1,0 +1,19 @@
+.card {
+  background-color: white;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px gray;
+  cursor: pointer;
+}
+
+.pokemon-pic {
+  height: 150px;
+}
