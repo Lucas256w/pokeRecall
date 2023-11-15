@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import '../styles/CardDisplay.css';
 
-const Card = ({ data }) => {
+const Card = ({ data, onClick }) => {
   return (
-    <div className="card">
+    <div onClick={onClick} className="card">
       <img className="pokemon-pic" src={data.sprites.front_default} />
       <div className="pokemon-name">{data.name}</div>
     </div>
   );
 };
 
-const CardDisplay = () => {
+const CardDisplay = ({ score, handleScore }) => {
   const [currentCards, setCurrentCards] = useState([]);
 
   useEffect(() => {
@@ -32,16 +32,17 @@ const CardDisplay = () => {
         newCards.push(data);
       }
       setCurrentCards(newCards);
-      console.log(newCards);
     };
 
     fetchData();
-  }, []);
+  }, [score]);
 
   return (
     <>
       {currentCards.map((data) => {
-        return <Card key={data.name} data={data} />;
+        return (
+          <Card key={data.name} onClick={handleScore(data.id)} data={data} />
+        );
       })}
     </>
   );
