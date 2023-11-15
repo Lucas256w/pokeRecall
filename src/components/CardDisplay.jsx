@@ -10,15 +10,28 @@ const Card = ({ data, onClick }) => {
   );
 };
 
-const CardDisplay = ({ score, handleScore }) => {
+const CardDisplay = ({ score, handleScore, selected }) => {
   const [currentCards, setCurrentCards] = useState([]);
 
   useEffect(() => {
     const currentIds = [];
-    while (currentIds.length < 10) {
-      const id = Math.floor(Math.random() * 151) + 1;
-      if (!currentIds.includes(id)) {
-        currentIds.push(id);
+    let containsUnique = false;
+
+    while (!containsUnique) {
+      // Generate 10 random numbers
+      while (currentIds.length < 10) {
+        const id = Math.floor(Math.random() * 151) + 1;
+        if (!currentIds.includes(id)) {
+          currentIds.push(id);
+        }
+      }
+
+      // Check if at least one number in currentIds is not in selected
+      containsUnique = currentIds.some((id) => !selected.includes(id));
+
+      // If not, reset currentIds and try again
+      if (!containsUnique) {
+        currentIds.length = 0;
       }
     }
 
@@ -35,13 +48,17 @@ const CardDisplay = ({ score, handleScore }) => {
     };
 
     fetchData();
-  }, [score]);
+  }, [selected]);
 
   return (
     <>
       {currentCards.map((data) => {
         return (
-          <Card key={data.name} onClick={handleScore(data.id)} data={data} />
+          <Card
+            key={data.name}
+            onClick={() => handleScore(data.id)}
+            data={data}
+          />
         );
       })}
     </>

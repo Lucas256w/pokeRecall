@@ -8,21 +8,28 @@ function App() {
   const [highScore, setHighscore] = useState(0);
   const [selected, setSelected] = useState([]);
 
-  const handleScore = (name) => {
-    if (!selected.includes(name)) {
+  const handleScore = (id) => {
+    if (!selected.includes(id)) {
       setScore(score + 1);
-      setSelected(selected.concat(name));
+      setSelected(selected.concat(id));
       if (score + 1 > highScore) {
         setHighscore(score + 1);
       }
+    } else {
+      alert('You lost!');
     }
   };
-  console.log(score);
+
+  console.log(selected);
   return (
     <>
       <ScoreHeader currentScore={score} highScore={highScore} />
       <main>
-        <CardDisplay score={score} handleScore={() => handleScore} />
+        <CardDisplay
+          selected={selected}
+          score={score}
+          handleScore={handleScore}
+        />
       </main>
     </>
   );
