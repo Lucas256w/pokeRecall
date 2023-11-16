@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../styles/CardDisplay.css';
+import PokeBall from '../assets/pokeball.png';
 
 const Card = ({ data, onClick }) => {
   return (
@@ -12,6 +13,7 @@ const Card = ({ data, onClick }) => {
 
 const CardDisplay = ({ handleScore, selected }) => {
   const [currentCards, setCurrentCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const currentIds = [];
@@ -36,6 +38,7 @@ const CardDisplay = ({ handleScore, selected }) => {
     }
 
     const fetchData = async () => {
+      setIsLoading(true);
       const newCards = [];
       for (let i = 0; i < currentIds.length; i += 1) {
         const response = await fetch(
@@ -45,6 +48,7 @@ const CardDisplay = ({ handleScore, selected }) => {
         newCards.push(data);
       }
       setCurrentCards(newCards);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -52,15 +56,19 @@ const CardDisplay = ({ handleScore, selected }) => {
 
   return (
     <>
-      {currentCards.map((data) => {
-        return (
+      {isLoading ? (
+        <div className="loading">
+          Loading... <img className="pokeball" src={PokeBall} />
+        </div>
+      ) : (
+        currentCards.map((data) => (
           <Card
             key={data.name}
             onClick={() => handleScore(data.id)}
             data={data}
           />
-        );
-      })}
+        ))
+      )}
     </>
   );
 };
