@@ -1,9 +1,15 @@
+html {
+  height: 100vh;
+}
+
 #root {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 body {
+  height: 100vh;
   background-image: url('/public/background.jpg');
   background-size: cover;
   background-position: center;
@@ -22,11 +28,17 @@ header {
 }
 
 main {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(5, 200px);
   row-gap: 100px;
   place-content: center;
   place-items: center;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
 }
 
 @media (max-width: 1000px) {

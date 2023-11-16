@@ -42,6 +42,7 @@ function App() {
           handleScore={handleScore}
         />
       </main>
+      <footer>Made by Jiahao Huamani</footer>
     </>
   );
 }
