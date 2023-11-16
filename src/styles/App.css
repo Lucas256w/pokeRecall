@@ -10,6 +10,8 @@ body {
   /* Optional: Set background attachment to fixed if you want a fixed background */
   background-attachment: fixed;
   margin: 0;
+
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
 header {

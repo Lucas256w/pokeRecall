@@ -17,3 +17,7 @@
 .pokemon-pic {
   height: 150px;
 }
+
+.pokemon-name {
+  font-size: 1.5rem;
+}

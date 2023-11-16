@@ -10,7 +10,7 @@ const Card = ({ data, onClick }) => {
   );
 };
 
-const CardDisplay = ({ score, handleScore, selected }) => {
+const CardDisplay = ({ handleScore, selected }) => {
   const [currentCards, setCurrentCards] = useState([]);
 
   useEffect(() => {
