@@ -45,6 +45,9 @@ footer {
   main {
     grid-template-columns: repeat(3, 200px);
   }
+  header {
+    margin: 0 0 50px 0;
+  }
 }
 
 @media (max-width: 500px) {
@@ -52,9 +55,13 @@ footer {
     grid-template-columns: repeat(2, 200px);
   }
 
-  header {
+  .score-container {
     display: flex;
     flex-direction: column;
-    margin: 30px 0;
+    align-items: center;
+  }
+
+  header {
+    margin: 50px 0;
   }
 }
